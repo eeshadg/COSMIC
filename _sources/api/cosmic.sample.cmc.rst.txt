@@ -1,0 +1,18 @@
+cosmic.sample.cmc package
+=========================
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   cosmic.sample.cmc.elson
+
+Module contents
+---------------
+
+.. automodule:: cosmic.sample.cmc
+   :members:
+   :undoc-members:
+   :show-inheritance:

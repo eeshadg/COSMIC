@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; cosmic 0+untagged.1.g8779fea documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cosmic-docs.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cosmic
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0+untagged.1.g8779fea
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inifile/index.html">Configuration files for COSMIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_info/index.html">Describing the output of COSMIC/BSE: Columns names/Values/Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Using COSMIC to evolve binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runpop/index.html">Generate a binary population by hand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fixedpop/index.html">Generate a population the <cite>COSMIC</cite> way</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cosmic</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/cosmic.plotting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-cosmic.plotting"></span><p><cite>plotting</cite></p>
+<dl class="py function">
+<dt id="cosmic.plotting.evolve_and_plot">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">evolve_and_plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">initC</span></em>, <em class="sig-param"><span class="n">t_min</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t_max</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">BSEDict</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sys_obs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.evolve_and_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evolve and plot binaries as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>initC</strong> : <cite>pandas.DataFrame</cite></p>
+<blockquote>
+<div><p>initial conditions for binary to evolve</p>
+</div></blockquote>
+<p><strong>t_min</strong> : <cite>float or list</cite></p>
+<blockquote>
+<div><p>starting time for plot in Myr</p>
+</div></blockquote>
+<p><strong>t_max</strong> : <cite>float or list</cite></p>
+<blockquote>
+<div><p>ending time for plot in Myr</p>
+</div></blockquote>
+<p><strong>BSEDict</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing all BSE flags needed</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>all_figs</strong> : <cite>list</cite></p>
+<blockquote>
+<div><p>list of all figures created</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.evolve_binary">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">evolve_binary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">initC</span></em>, <em class="sig-param"><span class="n">t_min</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">t_max</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">BSEDict</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.evolve_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evolves a single binary with all timesteps written
+to the bcm array for plotting</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>initC</strong> : <cite>pandas.DataFrame</cite></p>
+<blockquote>
+<div><p>initial conditions for binary to evolve</p>
+</div></blockquote>
+<p><strong>t_min</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>starting time for plot in Myr</p>
+</div></blockquote>
+<p><strong>t_max</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>ending time for plot in Myr</p>
+</div></blockquote>
+<p><strong>BSEDict</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing all BSE flags needed</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>bcm</strong> : <cite>pandas.DataFrame</cite></p>
+<blockquote>
+<div><p>binary evolution data form BSE’s bcm dict</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_HR_diagram">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_HR_diagram</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">L1_out</span></em>, <em class="sig-param"><span class="n">L2_out</span></em>, <em class="sig-param"><span class="n">Teff1_out</span></em>, <em class="sig-param"><span class="n">Teff2_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_HR_diagram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the eccentricity as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>L1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary luminosities at each binary evolution time step in Lsun</p>
+</div></blockquote>
+<p><strong>L2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary luminosities at each binary evolution time step in Lsun</p>
+</div></blockquote>
+<p><strong>Teff1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary effective temperature at each binary evolution time step in K</p>
+</div></blockquote>
+<p><strong>Teff2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary effective temperature at each binary evolution time step in K</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_Mdot">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_Mdot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">Mdot1_out</span></em>, <em class="sig-param"><span class="n">Mdot2_out</span></em>, <em class="sig-param"><span class="n">legend</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_Mdot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the stellar effectvie temperature as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>Mdot1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary mass transfer rate at each binary evolution time step in Msun/yr</p>
+</div></blockquote>
+<p><strong>Mdot2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary mass transfer rate at each binary evolution time step in Msun/yr</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_P_orb">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_P_orb</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">P_orb_out</span></em>, <em class="sig-param"><span class="n">t_max</span></em>, <em class="sig-param"><span class="n">sys_obs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_P_orb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the orbital period as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>P_orb_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of orbital periods at each binary evolution time step in days</p>
+</div></blockquote>
+<p><strong>t_max</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>ending time for plot in Myr</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_Teff">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_Teff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">Teff1_out</span></em>, <em class="sig-param"><span class="n">Teff2_out</span></em>, <em class="sig-param"><span class="n">sys_obs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_Teff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the stellar effectvie temperature as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>Teff1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary effective temperature at each binary evolution time step in K</p>
+</div></blockquote>
+<p><strong>Teff2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary effective temperature at each binary evolution time step in K</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_binary_evol">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_binary_evol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bcm</span></em>, <em class="sig-param"><span class="n">sys_obs</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_binary_evol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the full set of plots and kstar bar plots</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bcm</strong> : <cite>pandas.DataFrame</cite></p>
+<blockquote>
+<div><p>binary evolution data form BSE’s bcm dict</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>fig</strong> : <cite>matplotlib.figure</cite></p>
+<blockquote>
+<div><p>Figure containing all the plots!</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_ecc">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_ecc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">ecc_out</span></em>, <em class="sig-param"><span class="n">t_max</span></em>, <em class="sig-param"><span class="n">sys_obs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_ecc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the eccentricity as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>ecc_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of eccentricities at each binary evolution time step</p>
+</div></blockquote>
+<p><strong>t_max</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>ending time for plot in Myr</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_k_type">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_k_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax_1</span></em>, <em class="sig-param"><span class="n">ax_2</span></em>, <em class="sig-param"><span class="n">ax_k_type_list</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">k1_out</span></em>, <em class="sig-param"><span class="n">k2_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_k_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the stellar types as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax_1</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for kstar 1</p>
+</div></blockquote>
+<p><strong>ax_2</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for kstar 2</p>
+</div></blockquote>
+<p><strong>ax_k_type_list</strong> : <cite>list</cite></p>
+<blockquote>
+<div><p>List of ktypes for the legend of the ktype bar plots</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>k1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of kstar 1 type at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>k2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of kstar 2 type at each binary evolution time step in Myr</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_mass">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_mass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">M1_out</span></em>, <em class="sig-param"><span class="n">M2_out</span></em>, <em class="sig-param"><span class="n">sys_obs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the stellar mass as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>M1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary mass at each binary evolution time step in Msun</p>
+</div></blockquote>
+<p><strong>M2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary mass at each binary evolution time step in Msun</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.plotting.plot_radius">
+<code class="sig-prename descclassname">cosmic.plotting.</code><code class="sig-name descname">plot_radius</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ax</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">R1_out</span></em>, <em class="sig-param"><span class="n">R2_out</span></em>, <em class="sig-param"><span class="n">M1_out</span></em>, <em class="sig-param"><span class="n">M2_out</span></em>, <em class="sig-param"><span class="n">P_orb_out</span></em>, <em class="sig-param"><span class="n">ecc_out</span></em>, <em class="sig-param"><span class="n">sys_obs</span></em>, <em class="sig-param"><span class="n">legend</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.plotting.plot_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the stellar radii as a function of time</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ax</strong> : <cite>matplotlib.Axes</cite></p>
+<blockquote>
+<div><p>Axis instance for the plot</p>
+</div></blockquote>
+<p><strong>times</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of times at each binary evolution time step in Myr</p>
+</div></blockquote>
+<p><strong>R1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary radius at each binary evolution time step in Rsun</p>
+</div></blockquote>
+<p><strong>R2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary radius at each binary evolution time step in Rsun</p>
+</div></blockquote>
+<p><strong>M1_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of primary mass at each binary evolution time step in Msun</p>
+</div></blockquote>
+<p><strong>M2_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of secondary mass at each binary evolution time step in Msun</p>
+</div></blockquote>
+<p><strong>P_orb_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of orbital periods at each binary evolution time step in days</p>
+</div></blockquote>
+<p><strong>ecc_out</strong> : <cite>pandas.Series</cite></p>
+<blockquote>
+<div><p>Series of eccentricities at each binary evolution time step</p>
+</div></blockquote>
+<p><strong>sys_obs</strong> : <cite>Dict</cite></p>
+<blockquote>
+<div><p>Dictionary containing keys for binary parameters with values to plot
+as vertical lines for each stellar component</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>Null</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Katie Breivik
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

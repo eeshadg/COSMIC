@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; cosmic 0+untagged.1.g8779fea documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/cosmic-docs.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> cosmic
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0+untagged.1.g8779fea
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../inifile/index.html">Configuration files for COSMIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../output_info/index.html">Describing the output of COSMIC/BSE: Columns names/Values/Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Using COSMIC to evolve binaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../runpop/index.html">Generate a binary population by hand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fixedpop/index.html">Generate a population the <cite>COSMIC</cite> way</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">cosmic</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/cosmic.sample.sampler.cmc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-cosmic.sample.sampler.cmc"></span><p><cite>cmc</cite></p>
+<dl class="py class">
+<dt id="cosmic.sample.sampler.cmc.CMCSample">
+<em class="property">class </em><code class="sig-prename descclassname">cosmic.sample.sampler.cmc.</code><code class="sig-name descname">CMCSample</code><a class="headerlink" href="#cosmic.sample.sampler.cmc.CMCSample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="cosmic.sample.sampler.independent.html#cosmic.sample.sampler.independent.Sample" title="cosmic.sample.sampler.independent.Sample"><code class="xref py py-class docutils literal notranslate"><span class="pre">cosmic.sample.sampler.independent.Sample</span></code></a></p>
+<dl class="py method">
+<dt id="cosmic.sample.sampler.cmc.CMCSample.set_reff">
+<code class="sig-name descname">set_reff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mass</span></em>, <em class="sig-param"><span class="n">metallicity</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.sample.sampler.cmc.CMCSample.set_reff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="cosmic.sample.sampler.cmc.CMCSample.set_vr_vt_r">
+<code class="sig-name descname">set_vr_vt_r</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.sample.sampler.cmc.CMCSample.set_vr_vt_r" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="cosmic.sample.sampler.cmc.get_cmc_sampler">
+<code class="sig-prename descclassname">cosmic.sample.sampler.cmc.</code><code class="sig-name descname">get_cmc_sampler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">primary_model</span></em>, <em class="sig-param"><span class="n">ecc_model</span></em>, <em class="sig-param"><span class="n">porb_model</span></em>, <em class="sig-param"><span class="n">qmin</span></em>, <em class="sig-param"><span class="n">binfrac_model</span></em>, <em class="sig-param"><span class="n">met</span></em>, <em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#cosmic.sample.sampler.cmc.get_cmc_sampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates an initial binary sample according to user specified models</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>primary_model</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>Model to sample primary mass; choices include: kroupa93, kroupa01, salpeter55</p>
+</div></blockquote>
+<p><strong>ecc_model</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>Model to sample eccentricity; choices include: thermal, uniform, sana12</p>
+</div></blockquote>
+<p><strong>porb_model</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>Model to sample orbital period; choices include: log_uniform, sana12</p>
+</div></blockquote>
+<p><strong>binfrac_model</strong> : <cite>str or float</cite></p>
+<blockquote>
+<div><p>Model for binary fraction; choices include: vanHaaften or a fraction where 1.0 is 100% binaries</p>
+</div></blockquote>
+<p><strong>qmin</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>Sets the minimum mass ratio if q&gt;0 and uses the pre-MS lifetime
+of the companion for primary mass &gt; 5 msun to set q and sets q=0.1 
+for all primary mass &lt; 5 msun if q &lt; 0</p>
+<p>cluster_profile : <cite>str</cite>
+Model to use for the cluster profile (i.e. sampling of the placement of objects in the cluster and their velocity within the cluster)
+options include king, plummer and elson.</p>
+</div></blockquote>
+<p><strong>params</strong> : <cite>str</cite></p>
+<blockquote>
+<div><p>Path to the inifile with the BSE parameters. We need to generate radii for the single stars of the cluster by
+running BSE for a tiny time step.</p>
+</div></blockquote>
+<p><strong>met</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>Sets the metallicity of the binary population where solar metallicity is 0.02</p>
+</div></blockquote>
+<p><strong>size</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>Size of the population to sample</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>InitialCMCTable</strong> : <cite>pandas.DataFrame</cite></p>
+<blockquote>
+<div><p>DataFrame in the format of the InitialCMCTable</p>
+</div></blockquote>
+<p><strong>mass_singles</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>Total mass in single stars needed to generate population</p>
+</div></blockquote>
+<p><strong>mass_binaries</strong> : <cite>float</cite></p>
+<blockquote>
+<div><p>Total mass in binaries needed to generate population</p>
+</div></blockquote>
+<p><strong>n_singles</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>Number of single stars needed to generate a population</p>
+</div></blockquote>
+<p><strong>n_binaries</strong> : <cite>int</cite></p>
+<blockquote>
+<div><p>Number of binaries needed to generate a population</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Katie Breivik
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
