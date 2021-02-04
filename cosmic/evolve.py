@@ -441,7 +441,7 @@ def _evolve_single_system(f):
         _evolvebin.flags.bdecayfac = f["bdecayfac"]
         _evolvebin.magvars.bconst = f["bconst"]
         _evolvebin.magvars.ck = f["ck"]
-        _evolvebin.flags.windflag = f["windflag"]
+        _evolvebin.windvars.windflag = f["windflag"]
         _evolvebin.flags.qcflag = f["qcflag"]
         _evolvebin.flags.eddlimflag = f["eddlimflag"]
         _evolvebin.tidalvars.fprimc_array = f["fprimc_array"]

@@ -7,10 +7,10 @@
       COMMON /RAND2/ idum2,iy,ir
       INTEGER ktype(0:14,0:14)
       COMMON /TYPES/ ktype
-      INTEGER tflag,ifflag,remnantflag,wdflag,bhflag,windflag,qcflag
+      INTEGER tflag,ifflag,remnantflag,wdflag,bhflag,qcflag
       INTEGER eddlimflag,bhspinflag,aic,rejuvflag
       INTEGER htpmb,ST_cr,ST_tide,bdecayfac,grflag,bhms_coll_flag
-      COMMON /FLAGS/ tflag,ifflag,remnantflag,wdflag,bhflag,windflag,
+      COMMON /FLAGS/ tflag,ifflag,remnantflag,wdflag,bhflag,
      &               qcflag,eddlimflag,bhspinflag,aic,rejuvflag,
      &               htpmb,ST_cr,ST_tide,bdecayfac,grflag,
      &               bhms_coll_flag
@@ -21,10 +21,10 @@
 *
       REAL*8 zsun
       COMMON /METVARS/ zsun
-      REAL*8 neta,bwind,hewind,beta,xi,acc2,epsnov
+      REAL*8 neta,bwind,hewind,beta,xi,acc2,epsnov,windflag
       REAL*8 eddfac,gamma
       COMMON /WINDVARS/ neta,bwind,hewind,beta,xi,acc2,epsnov,
-     &                  eddfac,gamma
+     &                  eddfac,gamma,windflag
       REAL*8 alpha1,lambdaf
       REAL*8 qcrit_array(16)
       COMMON /CEVARS/ qcrit_array,alpha1,lambdaf
