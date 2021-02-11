@@ -204,6 +204,7 @@
                a = -26.4-0.23*mi
 	       b = windflag
 	       dms = (10.0**a)*(lum**abs(b))
+	       write(*,*) 'Beasor Winds'
 	    endif
 	 endif
 
