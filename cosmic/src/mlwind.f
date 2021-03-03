@@ -200,7 +200,7 @@
 * Apply Beasor et al (2020) prescription for Red Supergiants
 * Optional flag (windflag < 0)
          if(windflag.lt.0)then
-	 write(*,*) 'Checking Lum and Temp for Beasor'
+*	 write(*,*) 'Checking Lum and Temp for Beasor'
 	    if(lum.gt.1.0d+04.and.teff.le.7.5d+03.and.kw.lt.6.and.
      &      kw.gt.1)then
                a = -26.4-0.23*mi
