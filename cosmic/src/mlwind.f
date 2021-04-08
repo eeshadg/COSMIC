@@ -198,32 +198,19 @@
          endif
 
 * Apply Beasor et al (2020) prescription for Red Supergiants
-* Optional flag (windflag = 6)
-         if(windflag.eq.6)then
-*	 write(*,*) 'Checking Lum and Temp for Beasor 6'
-	    if((lum.gt.1.0d+04.and.log10(lum).lt.5.5).and.teff.le.7.5d+03.
-     &      and.kw.lt.6.and.kw.gt.1)then
-               a = -26.4-0.23*mi
-	       b = -4.9
-	       dms = (10.0**a)*(lum**abs(b))
-	       write(*,*) 'Beasor Winds 6'
-	    endif
-	 endif
-* Apply Beasor et al (2020) prescription for Red Supergiants
-* Optional flag (windflag < 0 or = 5)
+* Optional flag (windflag < 0)
          if(windflag.lt.0.or.windflag.eq.5)then
 *	 write(*,*) 'Checking Lum and Temp for Beasor'
-	    if(lum.gt.1.0d+04.and.teff.le.7.5d+03.and.kw.lt.6.and.
-     &      kw.gt.1)then
+	    if((lum.gt.1.0d+04.and.log10(lum).lt.5.5).and.teff.le.7.5d+03.
+     &	    and.kw.lt.6.and.kw.gt.1)then
                a = -26.4-0.23*mi
-	       if(windflag.eq.5) b = -4.9
-	       if(windflag.lt.0) b = windflag
+	       b = windflag
 	       dms = (10.0**a)*(lum**abs(b))
 	       write(*,*) 'Beasor Winds'
 	    endif
 	 endif
 
-         if(((windflag.eq.3.or.windflag.eq.6).or.kw.ge.2).and.kw.le.6)
+         if(((windflag.eq.3.or.windflag.lt.0).or.kw.ge.2).and.kw.le.6)
      &   then
 * LBV-like mass loss beyond the Humphreys-Davidson limit.
 * Optional flag (windflag=3 or 6) to use for every non-degenerate star
@@ -244,32 +231,7 @@
             testflag = 4
          endif
 *
-         if((windflag.eq.4.or.windflag.lt.0).and.kw.le.6)then
-* LBV-like mass loss beyond the Humphreys-Davidson limit.
-* Optional flag (windflag=4) to use for every non-degenerate star
-* past the limit, rather than just for giant, evolved stars
-            x = 1.0d-5*r*sqrt(lum)
-            if(log10(lum).gt.5.5.and.x.gt.1.d0)then
-               if(eddlimflag.eq.0) alpha = 0.d0
-               if(eddlimflag.eq.1) alpha = MLalpha(mt,lum,kw)
-               dms = 1.5d0*1.0d-04*((z/zsun)**alpha)
-               testflag = 3
-            endif
-	 endif
 
-         if((windflag.eq.5).and.kw.le.6)then
-* LBV-like mass loss beyond the Humphreys-Davidson limit.
-* Optional flag (windflag=5) to use Belczynski+08
-* for every non-degenerate star past the limit, 
-* rather than just for giant, evolved stars
-            x = 1.0d-5*r*sqrt(lum)
-	    hd_limit = 5.5
-            if(log10(lum).gt.hd_limit.and.x.gt.1.d0)then
-               dms = 0.1d0*(x-1.d0)**3*(lum/(10**hd_limit)-1.d0)
-               testflag = 3
-	       write(*,*) 'LBV Winds windflag 5'
-            endif
-	 endif
          mlwind = dms
       endif
 *
