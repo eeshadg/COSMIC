@@ -134,7 +134,7 @@
 *
          mlwind = dms
       elseif(windflag.ge.2.or.windflag.lt.0)then
-      write(*,*) 'Entered Wind Loop, Windflag is ',windflag
+*      write(*,*) 'Entered Wind Loop, Windflag is ',windflag
 * Vink winds etc according to as implemented following
 * Belczynski, Bulik, Fryer, Ruiter, Valsecchi, Vink & Hurley 2010.
 *
@@ -206,7 +206,7 @@
                a = -26.4-0.23*mi
 	       b = windflag
 	       dms = (10.0**a)*(lum**abs(b))
-	       write(*,*) 'Beasor Winds'
+*	       write(*,*) 'Beasor Winds'
 	    endif
 	 endif
 
