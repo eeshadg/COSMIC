@@ -310,7 +310,8 @@ if __name__ == '__main__':
                                                         SF_duration = sampling['SF_duration'],
                                                         met = sampling['metallicity'],
                                                         size = args.Nstep,
-                                                        pool=pool)
+                                                        pool=pool,
+							params = args.inifile)
             IBT, mass_singles, mass_binaries, n_singles, n_binaries = init_samp_list
 
         # Log the total sampled mass from the initial binary sample
