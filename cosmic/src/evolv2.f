@@ -213,7 +213,7 @@
       PARAMETER(kw3=619.2d0,wsun=9.46d+07,wx=9.46d+08)
       LOGICAL output
 *
-      REAL*8 qc_fixed
+      REAL*8 qc_fixed, beasor_on
       LOGICAL switchedCE,disrupt
 
 Cf2py intent(in) kstar
@@ -273,6 +273,9 @@ Cf2py intent(out) kick_info_out
       twopi = 2.d0*ACOS(-1.d0)
 
 
+* stars don't start out in RSG:
+      beasor_on = 0.0
+      beasor = 0.0
 * disrupt tracks if system get disrupted by a SN during the common
 * envelope
       disrupt = .false.
@@ -526,6 +529,74 @@ component.
                rlperi = rol(k)*(1.d0-ecc)
                dmr(k) = mlwind(kstar(k),lumin(k),rad(k),mass(k),
      &                         massc(k),rlperi,z,massi(k))
+               WRITE(*,*)beasor_on, beasor
+               if(beasor_on.eq.0.d0.and.beasor.eq.1.d0)then
+                  beasor_on = 1.d0
+                  evolve_type = 17
+                  teff1 = 1000.d0*((1130.d0*lumin(1)/
+     &                       (rad(1)**2.d0))**(1.d0/4.d0))
+                  teff2 = 1000.d0*((1130.d0*lumin(2)/
+     &                       (rad(2)**2.d0))**(1.d0/4.d0))
+                  if(B_0(1).eq.0.d0)then !PK.
+                      b01_bcm = 0.d0
+                   elseif(B_0(1).gt.0.d0.and.B(1).eq.0.d0)then
+                      b01_bcm = B_0(1)
+                  else
+                     b01_bcm = B(1)
+                  endif
+                  if(B_0(2).eq.0.d0)then
+                     b02_bcm = 0.d0
+                  elseif(B_0(2).gt.0.d0.and.B(2).eq.0.d0)then
+                     b02_bcm = B_0(2)
+                  else
+                     b02_bcm = B(2)
+                  endif
+                  CALL writebpp(jp,tphys,evolve_type,
+     &                          mass(1),mass(2),kstar(1),kstar(2),
+     &                         sep,tb,ecc,rrl1,rrl2,
+     &                         aj(1),aj(2),tms(1),tms(2),
+     &                         massc(1),massc(2),rad(1),rad(2),
+     &                         mass0(1),mass0(2),lumin(1),lumin(2),
+     &                         teff1,teff2,radc(1),radc(2),
+     &                         menv(1),menv(2),renv(1),renv(2),
+     &                         ospin(1),ospin(2),b01_bcm,b02_bcm,
+     &                         bacc(1),bacc(2),tacc(1),tacc(2),epoch(1),
+     &                         epoch(2),bhspin(1),bhspin(2))
+               endif
+
+               if(beasor.eq.0.d0.and.beasor_on.eq.1.d0)then
+                  beasor_on = 0.d0
+                  evolve_type = 18
+                  teff1 = 1000.d0*((1130.d0*lumin(1)/
+     &                      (rad(1)**2.d0))**(1.d0/4.d0))
+                  teff2 = 1000.d0*((1130.d0*lumin(2)/
+     &                      (rad(2)**2.d0))**(1.d0/4.d0))
+                  if(B_0(1).eq.0.d0)then !PK.
+                     b01_bcm = 0.d0
+                  elseif(B_0(1).gt.0.d0.and.B(1).eq.0.d0)then
+                     b01_bcm = B_0(1)
+                  else
+                     b01_bcm = B(1)
+                  endif
+                  if(B_0(2).eq.0.d0)then
+                     b02_bcm = 0.d0
+                  elseif(B_0(2).gt.0.d0.and.B(2).eq.0.d0)then
+                     b02_bcm = B_0(2)
+                  else
+                     b02_bcm = B(2)
+                  endif
+                  CALL writebpp(jp,tphys,evolve_type,
+     &                          mass(1),mass(2),kstar(1),kstar(2),
+     &                         sep,tb,ecc,rrl1,rrl2,
+     &                         aj(1),aj(2),tms(1),tms(2),
+     &                         massc(1),massc(2),rad(1),rad(2),
+     &                         mass0(1),mass0(2),lumin(1),lumin(2),
+     &                         teff1,teff2,radc(1),radc(2),
+     &                         menv(1),menv(2),renv(1),renv(2),
+     &                         ospin(1),ospin(2),b01_bcm,b02_bcm,
+     &                         bacc(1),bacc(2),tacc(1),tacc(2),epoch(1),
+     &                         epoch(2),bhspin(1),bhspin(2))
+               endif
 *
 * Calculate how much of wind mass loss from companion will be
 * accreted (Boffin & Jorissen, A&A 1988, 205, 155).
@@ -882,6 +953,74 @@ component.
                rlperi = 0.d0
                dmr(k) = mlwind(kstar(k),lumin(k),rad(k),mass(k),
      &                         massc(k),rlperi,z,massi(k))
+               WRITE(*,*)beasor_on, beasor
+               if(beasor.eq.1.0.and.beasor_on.eq.0.d0)then
+                  beasor_on = 1.d0
+                  evolve_type = 17
+                  teff1 = 1000.d0*((1130.d0*lumin(1)/
+     &                       (rad(1)**2.d0))**(1.d0/4.d0))
+                  teff2 = 1000.d0*((1130.d0*lumin(2)/
+     &                       (rad(2)**2.d0))**(1.d0/4.d0))
+                  if(B_0(1).eq.0.d0)then !PK.
+                      b01_bcm = 0.d0
+                   elseif(B_0(1).gt.0.d0.and.B(1).eq.0.d0)then
+                      b01_bcm = B_0(1)
+                  else
+                     b01_bcm = B(1)
+                  endif
+                  if(B_0(2).eq.0.d0)then
+                     b02_bcm = 0.d0
+                  elseif(B_0(2).gt.0.d0.and.B(2).eq.0.d0)then
+                     b02_bcm = B_0(2)
+                  else
+                     b02_bcm = B(2)
+                  endif
+                  CALL writebpp(jp,tphys,evolve_type,
+     &                          mass(1),mass(2),kstar(1),kstar(2),
+     &                         sep,tb,ecc,rrl1,rrl2,
+     &                         aj(1),aj(2),tms(1),tms(2),
+     &                         massc(1),massc(2),rad(1),rad(2),
+     &                         mass0(1),mass0(2),lumin(1),lumin(2),
+     &                         teff1,teff2,radc(1),radc(2),
+     &                         menv(1),menv(2),renv(1),renv(2),
+     &                         ospin(1),ospin(2),b01_bcm,b02_bcm,
+     &                         bacc(1),bacc(2),tacc(1),tacc(2),epoch(1),
+     &                         epoch(2),bhspin(1),bhspin(2))
+               endif
+
+               if(beasor.eq.0.and.beasor_on.eq.1.d0)then
+                  beasor_on = 0.d0
+                  evolve_type = 18
+                  teff1 = 1000.d0*((1130.d0*lumin(1)/
+     &                      (rad(1)**2.d0))**(1.d0/4.d0))
+                  teff2 = 1000.d0*((1130.d0*lumin(2)/
+     &                      (rad(2)**2.d0))**(1.d0/4.d0))
+                  if(B_0(1).eq.0.d0)then !PK.
+                     b01_bcm = 0.d0
+                  elseif(B_0(1).gt.0.d0.and.B(1).eq.0.d0)then
+                     b01_bcm = B_0(1)
+                  else
+                     b01_bcm = B(1)
+                  endif
+                  if(B_0(2).eq.0.d0)then
+                     b02_bcm = 0.d0
+                  elseif(B_0(2).gt.0.d0.and.B(2).eq.0.d0)then
+                     b02_bcm = B_0(2)
+                  else
+                     b02_bcm = B(2)
+                  endif
+                  CALL writebpp(jp,tphys,evolve_type,
+     &                          mass(1),mass(2),kstar(1),kstar(2),
+     &                         sep,tb,ecc,rrl1,rrl2,
+     &                         aj(1),aj(2),tms(1),tms(2),
+     &                         massc(1),massc(2),rad(1),rad(2),
+     &                         mass0(1),mass0(2),lumin(1),lumin(2),
+     &                         teff1,teff2,radc(1),radc(2),
+     &                         menv(1),menv(2),renv(1),renv(2),
+     &                         ospin(1),ospin(2),b01_bcm,b02_bcm,
+     &                         bacc(1),bacc(2),tacc(1),tacc(2),epoch(1),
+     &                         epoch(2),bhspin(1),bhspin(2))
+               endif
             else
                dmr(k) = 0.d0
             endif
@@ -2616,6 +2755,74 @@ component.
                rlperi = rol(k)*(1.d0-ecc)
                dmr(k) = mlwind(kstar(k),lumin(k),radx(k),
      &                         mass(k),massc(k),rlperi,z,massi(k))
+               WRITE(*,*)beasor_on, beasor
+               if(beasor_on.eq.0.d0.and.beasor.eq.1.d0)then
+                  beasor_on = 1.d0
+                  evolve_type = 17
+                  teff1 = 1000.d0*((1130.d0*lumin(1)/
+     &                       (rad(1)**2.d0))**(1.d0/4.d0))
+                  teff2 = 1000.d0*((1130.d0*lumin(2)/
+     &                       (rad(2)**2.d0))**(1.d0/4.d0))
+                  if(B_0(1).eq.0.d0)then !PK.
+                      b01_bcm = 0.d0
+                   elseif(B_0(1).gt.0.d0.and.B(1).eq.0.d0)then
+                      b01_bcm = B_0(1)
+                  else
+                     b01_bcm = B(1)
+                  endif
+                  if(B_0(2).eq.0.d0)then
+                     b02_bcm = 0.d0
+                  elseif(B_0(2).gt.0.d0.and.B(2).eq.0.d0)then
+                     b02_bcm = B_0(2)
+                  else
+                     b02_bcm = B(2)
+                  endif
+                  CALL writebpp(jp,tphys,evolve_type,
+     &                          mass(1),mass(2),kstar(1),kstar(2),
+     &                         sep,tb,ecc,rrl1,rrl2,
+     &                         aj(1),aj(2),tms(1),tms(2),
+     &                         massc(1),massc(2),rad(1),rad(2),
+     &                         mass0(1),mass0(2),lumin(1),lumin(2),
+     &                         teff1,teff2,radc(1),radc(2),
+     &                         menv(1),menv(2),renv(1),renv(2),
+     &                         ospin(1),ospin(2),b01_bcm,b02_bcm,
+     &                         bacc(1),bacc(2),tacc(1),tacc(2),epoch(1),
+     &                         epoch(2),bhspin(1),bhspin(2))
+               endif
+
+               if(beasor.eq.0.and.beasor_on.eq.1.d0)then
+                  beasor_on = 0.d0
+                  evolve_type = 18
+                  teff1 = 1000.d0*((1130.d0*lumin(1)/
+     &                      (rad(1)**2.d0))**(1.d0/4.d0))
+                  teff2 = 1000.d0*((1130.d0*lumin(2)/
+     &                      (rad(2)**2.d0))**(1.d0/4.d0))
+                  if(B_0(1).eq.0.d0)then !PK.
+                     b01_bcm = 0.d0
+                  elseif(B_0(1).gt.0.d0.and.B(1).eq.0.d0)then
+                     b01_bcm = B_0(1)
+                  else
+                     b01_bcm = B(1)
+                  endif
+                  if(B_0(2).eq.0.d0)then
+                     b02_bcm = 0.d0
+                  elseif(B_0(2).gt.0.d0.and.B(2).eq.0.d0)then
+                     b02_bcm = B_0(2)
+                  else
+                     b02_bcm = B(2)
+                  endif
+                  CALL writebpp(jp,tphys,evolve_type,
+     &                          mass(1),mass(2),kstar(1),kstar(2),
+     &                         sep,tb,ecc,rrl1,rrl2,
+     &                         aj(1),aj(2),tms(1),tms(2),
+     &                         massc(1),massc(2),rad(1),rad(2),
+     &                         mass0(1),mass0(2),lumin(1),lumin(2),
+     &                         teff1,teff2,radc(1),radc(2),
+     &                         menv(1),menv(2),renv(1),renv(2),
+     &                         ospin(1),ospin(2),b01_bcm,b02_bcm,
+     &                         bacc(1),bacc(2),tacc(1),tacc(2),epoch(1),
+     &                         epoch(2),bhspin(1),bhspin(2))
+               endif
                vwind2 = 2.d0*beta*acc1*mass(k)/radx(k)
                omv2 = (1.d0 + vorb2/vwind2)**(3.d0/2.d0)
                dmt(3-k) = ivsqm*acc2*dmr(k)*((acc1*mass(3-k)/vwind2)**2)
