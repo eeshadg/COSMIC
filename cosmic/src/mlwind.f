@@ -24,6 +24,8 @@
 *      stars=3.
 * Must be one of these values or mlwind will cause problem with code,
 * i.e. mlwind not set (see last line of main if statement...).
+      beasor = 0.0
+
       if(windflag.eq.0)then
 * BSE
 *
@@ -201,14 +203,15 @@
 * Optional flag (windflag < 0)
          if(windflag.lt.0.or.windflag.eq.5)then
 *	 write(*,*) 'Checking Lum and Temp for Beasor'
-	    if((lum.gt.1.0d+04.and.log10(lum).lt.5.5).and.teff.le.7.5d+03.
-     &	    and.kw.lt.5.and.kw.gt.1)then
+            if((lum.gt.1.0d+04.and.log10(lum).lt.5.5).and.
+     &         teff.le.7.5d+03.and.kw.lt.5.and.kw.gt.1)then
+               beasor = 1.0
                a = -26.4-0.23*mi
-	       b = windflag
-	       dms = (10.0**a)*(lum**abs(b))
+               b = windflag
+               dms = (10.0**a)*(lum**abs(b))
 *	       write(*,*) 'Beasor Winds'
-	    endif
-	 endif
+            endif
+          endif
 
          if(((windflag.eq.3.or.windflag.lt.0).or.kw.ge.2).and.kw.le.6)
      &   then

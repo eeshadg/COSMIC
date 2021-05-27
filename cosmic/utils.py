@@ -960,9 +960,9 @@ def error_check(BSEDict, filters=None, convergence=None, sampling=None):
 
     flag = "windflag"
     if flag in BSEDict.keys():
-        if BSEDict[flag] > 3:
+        if BSEDict[flag] > 5:
             raise ValueError(
-                "'{0:s}' needs to be set to an integer between 0 to 3, or a negative number (you set it to '{1:d}')".format(
+                "'{0:s}' needs to be set to an integer between 0 to 5, or a negative number (you set it to '{1:d}')".format(
                     flag, BSEDict[flag]
                 )
             )
