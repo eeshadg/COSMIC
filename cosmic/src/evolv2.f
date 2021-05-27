@@ -953,7 +953,6 @@ component.
                rlperi = 0.d0
                dmr(k) = mlwind(kstar(k),lumin(k),rad(k),mass(k),
      &                         massc(k),rlperi,z,massi(k))
-               WRITE(*,*)beasor_on, beasor
                if(beasor.eq.1.0.and.beasor_on.eq.0.d0)then
                   beasor_on = 1.d0
                   evolve_type = 17
@@ -2755,7 +2754,6 @@ component.
                rlperi = rol(k)*(1.d0-ecc)
                dmr(k) = mlwind(kstar(k),lumin(k),radx(k),
      &                         mass(k),massc(k),rlperi,z,massi(k))
-               WRITE(*,*)beasor_on, beasor
                if(beasor_on.eq.0.d0.and.beasor.eq.1.d0)then
                   beasor_on = 1.d0
                   evolve_type = 17
