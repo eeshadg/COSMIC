@@ -24,7 +24,6 @@
 *      stars=3.
 * Must be one of these values or mlwind will cause problem with code,
 * i.e. mlwind not set (see last line of main if statement...).
-      beasor = 0.0
 
       if(windflag.eq.0)then
 * BSE
